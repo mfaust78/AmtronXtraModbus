@@ -34,6 +34,7 @@ modbus:
     timeout: 10
     delay: 1
     sensors:
+      # Read Registers
       - name: "Amtron Registers"
         address: 0x0300
         slave: 255
@@ -43,6 +44,23 @@ modbus:
         count: 38
         data_type: custom
         structure: ">2h15H22B10H"
+      # Holding register (R/W)
+      - name: "Amtron Current Limitation"
+        unique_id: amtron_current_limitation
+        slave: 255
+        address: 0x0400
+        count: 1
+        data_type: uint16
+        input_type: holding
+        unit_of_measurement: A
+        device_class: current
+      - name: "Amtron Change Charge State"
+        unique_id: amtron_change_charge_state
+        slave: 255
+        address: 0x0401
+        count: 1
+        data_type: uint16
+        input_type: holding
 
 # Convert the structure to useful, separated values using templates
 template:
@@ -142,6 +160,7 @@ template:
           {% set sn = (states('sensor.amtron_registers').split(',')[11]|int + states('sensor.amtron_registers').split(',')[12]|int * 65536) | string %}
           135{{ sn[:4] }}.{{ sn[4:] }}
   - sensor:
+      # "Charging session meter count"
       - name: "Amtron Energy"
         unique_id: amtron_energy
         availability: "{{ has_value('sensor.amtron_registers') }}"
