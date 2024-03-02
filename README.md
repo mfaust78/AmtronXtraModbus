@@ -44,6 +44,7 @@ modbus:
         count: 38
         data_type: custom
         structure: ">2h15H22B10H"
+        precision: 0
       # Holding register (R/W)
       - name: "Amtron Current Limitation"
         unique_id: amtron_current_limitation
