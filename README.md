@@ -208,4 +208,4 @@ template:
 
 ## References
 - [Mennekes Software Download](https://www.mennekes.de/emobility/services/software-updates/)
-- [Mennekes Modbus Description](Description Modbus_AMTRON HCC3_v01_2021-06-25_en.pdf)
+- [Mennekes Modbus Description](Description%20Modbus_AMTRON%20HCC3_v01_2021-06-25_en.pdf)
